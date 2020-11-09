@@ -1,13 +1,38 @@
 import React from "react";
+import styled from "styled-components";
 
-import { Gene } from "./../../types";
+import TranscriptComponent from "./TranscriptComponent";
+import { Gene, Transcript } from "./../../types";
 
 type Props = {
   gene: Gene;
 };
 
+const CANVAS_WIDTH = 1000;
+const CANVAS_HEIGHT = 700;
+
+const Canvass = styled.div`
+  position: relative;
+  height: ${CANVAS_HEIGHT}px;
+  width: ${CANVAS_WIDTH}px;
+`;
+
 const GeneViewer: React.FunctionComponent<Props> = ({ gene }: Props) => {
-  return <div>{gene.id}</div>;
+  const scale = (ptValue: number, shouldConsiderPosition: boolean): number =>
+    (CANVAS_WIDTH / (gene.end - gene.start)) *
+    (shouldConsiderPosition ? ptValue - gene.start : ptValue);
+
+  return (
+    <Canvass data-testid="app-gene-viewer">
+      {gene.Transcript.map((transcript: Transcript) => {
+        const props = {
+          scale,
+          transcript,
+        };
+        return <TranscriptComponent key={transcript.id} {...props} />;
+      })}
+    </Canvass>
+  );
 };
 
 export default GeneViewer;

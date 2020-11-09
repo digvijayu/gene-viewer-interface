@@ -20,10 +20,16 @@ const Input: React.FunctionComponent<Props> = ({
   const searchKey = () => onSearch(inputValue);
 
   return (
-    <div>
-      <label>{label}</label>
-      <input value={inputValue} onChange={handleOnInputUpdate} />
-      <button onClick={searchKey}>Search</button>
+    <div data-testid="search-form">
+      <label data-testid="search-form_label">{label}</label>
+      <input
+        data-testid="search-form_input"
+        value={inputValue}
+        onChange={handleOnInputUpdate}
+      />
+      <button data-testid="search-form_button" onClick={searchKey}>
+        Search
+      </button>
     </div>
   );
 };

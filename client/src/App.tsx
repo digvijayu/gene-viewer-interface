@@ -21,7 +21,7 @@ function App() {
     } else {
       const geneData = await genesApi.get(newVal);
       setAppendNewGeneSearch(geneData);
-      setDisplayGene(cachedValue);
+      setDisplayGene(geneData);
     }
   };
 
