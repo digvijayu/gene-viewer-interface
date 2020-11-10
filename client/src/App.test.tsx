@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, createEvent } from "@testing-library/react";
-
 import { act } from "react-dom/test-utils";
+
 import { Gene } from "./types";
 import * as geneApis from "./api/genes";
 import App from "./App";

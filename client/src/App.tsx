@@ -9,7 +9,7 @@ import * as genesApi from "./api/genes";
 function App() {
   const [genesCache, setAppendNewGeneSearch] = useCachedGenes();
   const [inputValue, setInputValue] = React.useState("");
-  const [displayGene, setDisplayGene] = React.useState<Gene>(
+  const [displayGene, setDisplayGene] = React.useState<Gene | undefined>(
     genesCache.length > 0 ? genesCache[genesCache.length - 1] : undefined
   );
 
@@ -19,9 +19,13 @@ function App() {
     if (cachedValue !== undefined) {
       setDisplayGene(cachedValue);
     } else {
-      const geneData = await genesApi.get(newVal);
-      setAppendNewGeneSearch(geneData);
-      setDisplayGene(geneData);
+      try {
+        const geneData = await genesApi.get(newVal);
+        setAppendNewGeneSearch(geneData);
+        setDisplayGene(geneData);
+      } catch (error) {
+        setDisplayGene(undefined);
+      }
     }
   };
 
