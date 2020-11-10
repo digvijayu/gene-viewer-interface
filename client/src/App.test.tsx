@@ -8,8 +8,11 @@ import App from "./App";
 import { mockGene } from "./__mock__/gene";
 
 test("renders the initial screen", () => {
-  render(<App />);
+  act(() => {
+    render(<App />);
+  });
   expect(screen.getByTestId("search-form")).toBeInTheDocument();
+  expect(screen.getByTestId("sort-form")).toBeInTheDocument();
   expect(screen.queryByTestId("app-gene-viewer")).toBeFalsy();
 });
 

@@ -7,7 +7,7 @@ import { mockGene } from "./../../../__mock__/gene";
 
 test("renders gene viewer elements", async () => {
   act(() => {
-    render(<GeneViewer gene={mockGene} />);
+    render(<GeneViewer gene={mockGene} sortingOption="longestToShortest" />);
   });
   expect(screen.getByTestId("app-gene-viewer")).toBeInTheDocument();
   expect(screen.getAllByTestId("transcript").length).toBe(2);

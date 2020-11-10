@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-import GeneViewer from "./components/GeneViewer";
-import SearchForm from "./components/SearchForm";
-import useCachedGenes from "./hooks/useCachedGenes";
 import { Gene } from "./types";
 import * as genesApi from "./api/genes";
+import GeneViewer from "./components/GeneViewer";
+import History from "./components/History";
+import SearchForm from "./components/SearchForm";
+import SortingOptions, { SortingOption } from "./components/SortingOptions";
+import useCachedGenes from "./hooks/useCachedGenes";
 
 function App() {
   const [genesCache, setAppendNewGeneSearch] = useCachedGenes();
   const [inputValue, setInputValue] = React.useState("");
   const [displayGene, setDisplayGene] = React.useState<Gene | undefined>(
     genesCache.length > 0 ? genesCache[genesCache.length - 1] : undefined
+  );
+  const [sortingOption, setSortingOption] = useState<SortingOption>(
+    "longestToShortest"
   );
 
   const handleOnInputChange = async (newVal: string) => {
@@ -29,6 +34,15 @@ function App() {
     }
   };
 
+  const handleOnSortingOptionChange = (sortingOption: SortingOption) => {
+    setSortingOption(sortingOption);
+  };
+
+  const handleOnHistorySelection = (gene: Gene) => {
+    setAppendNewGeneSearch(gene);
+    setDisplayGene(gene);
+  };
+
   return (
     <div>
       <SearchForm
@@ -36,7 +50,14 @@ function App() {
         value={inputValue}
         onSearch={handleOnInputChange}
       />
-      {displayGene && <GeneViewer gene={displayGene} />}
+      <History genes={genesCache} onClick={handleOnHistorySelection} />
+      <SortingOptions
+        value="longestToShortest"
+        onChange={handleOnSortingOptionChange}
+      />
+      {displayGene && (
+        <GeneViewer gene={displayGene} sortingOption={sortingOption} />
+      )}
     </div>
   );
 }

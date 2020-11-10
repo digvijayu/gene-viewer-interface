@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 import TranscriptComponent from "./TranscriptComponent";
 import { Gene, Transcript } from "./../../types";
+import { SortingOption } from "./../SortingOptions";
 
 type Props = {
   gene: Gene;
+  sortingOption: SortingOption;
 };
 
 const CANVAS_WIDTH = 1000;
@@ -17,14 +19,22 @@ const Canvass = styled.div`
   width: ${CANVAS_WIDTH}px;
 `;
 
-const GeneViewer: React.FunctionComponent<Props> = ({ gene }: Props) => {
+const GeneViewer: React.FunctionComponent<Props> = ({
+  gene,
+  sortingOption,
+}: Props) => {
   const scale = (ptValue: number, shouldConsiderPosition: boolean): number =>
     (CANVAS_WIDTH / (gene.end - gene.start)) *
     (shouldConsiderPosition ? ptValue - gene.start : ptValue);
 
+  const sortingFunction = (a: Transcript, b: Transcript) =>
+    sortingOption === "longestToShortest"
+      ? b.end - b.start - (a.end - a.start)
+      : a.end - a.start - (b.end - b.start);
+
   return (
     <Canvass data-testid="app-gene-viewer">
-      {gene.Transcript.map((transcript: Transcript) => {
+      {gene.Transcript.sort(sortingFunction).map((transcript: Transcript) => {
         const props = {
           scale,
           transcript,
