@@ -41,4 +41,4 @@ Launches the cypress test runner
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.

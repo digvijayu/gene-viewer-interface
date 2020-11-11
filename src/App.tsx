@@ -57,6 +57,7 @@ function App() {
   };
 
   const handleOnHistorySelection = (gene: Gene) => {
+    setDisplayErrorMessage(false);
     setAppendNewGeneSearch(gene);
     setDisplayGene(gene);
   };
