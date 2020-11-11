@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
-let clear;
 context("Search Operation", () => {
-  clear = Cypress.LocalStorage.clear;
+  let clear = Cypress.LocalStorage.clear;
   Cypress.LocalStorage.clear = function () {};
 
   it("search for a gene", () => {

@@ -35,8 +35,8 @@ const History = ({ genes, onClick }: Props) => {
             key={gene.id}
             onClick={() => onClick(gene)}
           >
-            <GeneId>{gene.id}</GeneId>
-            <GeneName>{gene.display_name}</GeneName>
+            <GeneId data-testid="history-id">{gene.id}</GeneId>
+            <GeneName data-testid="history-name">{gene.display_name}</GeneName>
           </GeneItem>
         );
       })}
