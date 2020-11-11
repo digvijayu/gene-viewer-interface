@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { StyledLabel } from "./../../utils/styledComponents";
+
 type Props = {
   label: string;
   value: string;
@@ -21,7 +23,9 @@ const Input: React.FunctionComponent<Props> = ({
 
   return (
     <div data-testid="search-form">
-      <label data-testid="search-form_label">{label}</label>
+      <div>
+        <StyledLabel data-testid="search-form_label">{label}</StyledLabel>
+      </div>
       <input
         data-testid="search-form_input"
         value={inputValue}

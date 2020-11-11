@@ -8,9 +8,16 @@ import History from "./components/History";
 import SearchForm from "./components/SearchForm";
 import SortingOptions, { SortingOption } from "./components/SortingOptions";
 import useCachedGenes from "./hooks/useCachedGenes";
+import { SpacerX, SpacerY } from "./utils/styledComponents";
 
 const Error = styled.div`
   color: red;
+`;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
 `;
 
 function App() {
@@ -56,22 +63,31 @@ function App() {
 
   return (
     <div>
-      <SearchForm
-        label="enter gene id"
-        value={inputValue}
-        onSearch={handleOnInputChange}
-      />
-      <History genes={genesCache} onClick={handleOnHistorySelection} />
-      <SortingOptions
-        value="longestToShortest"
-        onChange={handleOnSortingOptionChange}
-      />
-      {displayGene && (
-        <GeneViewer gene={displayGene} sortingOption={sortingOption} />
-      )}
-      {displayErrorMessage && (
-        <Error data-testid="error">The entered stable id is invalid.</Error>
-      )}
+      <Row>
+        <SearchForm
+          label="Enter stable id of the Gene"
+          value={inputValue}
+          onSearch={handleOnInputChange}
+        />
+        <SpacerY />
+        <SortingOptions
+          value="longestToShortest"
+          onChange={handleOnSortingOptionChange}
+        />
+      </Row>
+
+      <SpacerX />
+
+      <Row>
+        <History genes={genesCache} onClick={handleOnHistorySelection} />
+        <SpacerY />
+        {displayGene && (
+          <GeneViewer gene={displayGene} sortingOption={sortingOption} />
+        )}
+        {displayErrorMessage && (
+          <Error data-testid="error">The entered stable id is invalid.</Error>
+        )}
+      </Row>
     </div>
   );
 }

@@ -9,15 +9,22 @@ type Props = {
 };
 
 const Container = styled.div`
-  background-color: gray;
+  background-color: #eee;
+  text-align: center;
+  padding: 10px;
 `;
 
 const GeneItem = styled.div`
-  background-color: gray;
+  background-color: #eee;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const GeneId = styled.div`
-  color: white;
+  color: #4286f4;
 `;
 
 const GeneName = styled.div`
@@ -28,6 +35,7 @@ const History = ({ genes, onClick }: Props) => {
   if (genes.length < 1) return null;
   return (
     <Container data-testid="history">
+      <h3>History</h3>
       {genes.map((gene) => {
         return (
           <GeneItem

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { StyledLabel } from "./../../utils/styledComponents";
+
 export type SortingOption = "longestToShortest" | "shortestToLongest";
 
 type Props = {
@@ -22,6 +24,9 @@ const SortingOptions: React.FunctionComponent<Props> = ({
   };
   return (
     <div data-testid="sort-form">
+      <div>
+        <StyledLabel>Sort By:</StyledLabel>
+      </div>
       <input
         type="radio"
         name="longestToShortest"
