@@ -25,7 +25,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -46,6 +47,8 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.4"
-  }
+    "@types/styled-components": "^5.1.4",
+    "gh-pages": "^3.1.0"
+  },
+  "homepage": "https://digvijayu.github.io/gene-viewer-interface"
 }
