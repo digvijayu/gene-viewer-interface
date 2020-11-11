@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 import { Gene } from "./types";
 import * as genesApi from "./api/genes";
@@ -7,6 +8,10 @@ import History from "./components/History";
 import SearchForm from "./components/SearchForm";
 import SortingOptions, { SortingOption } from "./components/SortingOptions";
 import useCachedGenes from "./hooks/useCachedGenes";
+
+const Error = styled.div`
+  color: red;
+`;
 
 function App() {
   const [genesCache, setAppendNewGeneSearch] = useCachedGenes();
@@ -17,8 +22,12 @@ function App() {
   const [sortingOption, setSortingOption] = useState<SortingOption>(
     "longestToShortest"
   );
+  const [displayErrorMessage, setDisplayErrorMessage] = useState<boolean>(
+    false
+  );
 
   const handleOnInputChange = async (newVal: string) => {
+    setDisplayErrorMessage(false);
     setInputValue(newVal);
     const cachedValue = genesCache.find((gene: Gene) => gene.id === newVal);
     if (cachedValue !== undefined) {
@@ -30,6 +39,7 @@ function App() {
         setAppendNewGeneSearch(geneData);
         setDisplayGene(geneData);
       } catch (error) {
+        setDisplayErrorMessage(true);
         setDisplayGene(undefined);
       }
     }
@@ -58,6 +68,9 @@ function App() {
       />
       {displayGene && (
         <GeneViewer gene={displayGene} sortingOption={sortingOption} />
+      )}
+      {displayErrorMessage && (
+        <Error data-testid="error">The entered stable id is invalid.</Error>
       )}
     </div>
   );
