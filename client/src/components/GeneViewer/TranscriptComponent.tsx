@@ -8,6 +8,7 @@ import ExonLink from "./ExonLink";
 type Props = {
   scale: (ptValue: number, shouldConsiderPosition: boolean) => number;
   transcript: Transcript;
+  color: string;
 };
 
 const StyledTranscript = styled.div`
@@ -18,16 +19,21 @@ const StyledTranscript = styled.div`
 const exonSortingFn = (exonA: Exon, exonB: Exon): number =>
   exonA.start - exonB.start;
 
-const TranscriptComponent = ({ scale, transcript }: Props) => {
+const TranscriptComponent = ({ scale, transcript, color }: Props) => {
   return (
     <StyledTranscript data-testid="transcript" data-id={transcript.id}>
       {transcript.Exon.sort(exonSortingFn).map((exon, index) => {
         const nextItem = transcript.Exon[index + 1];
         return (
           <React.Fragment key={exon.id}>
-            <ExonComponent exon={exon} scale={scale} />
+            <ExonComponent exon={exon} scale={scale} color={color} />
             {nextItem && (
-              <ExonLink scale={scale} start={exon.end} end={nextItem.start} />
+              <ExonLink
+                scale={scale}
+                start={exon.end}
+                end={nextItem.start}
+                color={color}
+              />
             )}
           </React.Fragment>
         );

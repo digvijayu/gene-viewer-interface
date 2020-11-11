@@ -4,6 +4,7 @@ import styled from "styled-components";
 import TranscriptComponent from "./TranscriptComponent";
 import { Gene, Transcript } from "./../../types";
 import { SortingOption } from "./../SortingOptions";
+import { getRandomColor } from "./../../utils/color";
 
 type Props = {
   gene: Gene;
@@ -34,13 +35,16 @@ const GeneViewer: React.FunctionComponent<Props> = ({
 
   return (
     <Canvass data-testid="app-gene-viewer">
-      {gene.Transcript.sort(sortingFunction).map((transcript: Transcript) => {
-        const props = {
-          scale,
-          transcript,
-        };
-        return <TranscriptComponent key={transcript.id} {...props} />;
-      })}
+      {gene.Transcript.sort(sortingFunction).map(
+        (transcript: Transcript, index: number) => {
+          const props = {
+            scale,
+            transcript,
+            color: getRandomColor(index),
+          };
+          return <TranscriptComponent key={transcript.id} {...props} />;
+        }
+      )}
     </Canvass>
   );
 };
