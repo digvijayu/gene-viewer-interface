@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Gene } from "./types";
 import * as genesApi from "./api/genes";
 import GeneViewer from "./components/GeneViewer";
+import GeneInfo from "./components/GeneInfo";
 import History from "./components/History";
 import SearchForm from "./components/SearchForm";
 import SortingOptions, { SortingOption } from "./components/SortingOptions";
@@ -77,7 +78,11 @@ function App() {
         />
       </Row>
 
-      <SpacerX />
+      {displayGene && (
+        <Row>
+          <GeneInfo gene={displayGene} />
+        </Row>
+      )}
 
       <Row>
         <History genes={genesCache} onClick={handleOnHistorySelection} />

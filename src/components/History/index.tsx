@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { StyledLabel } from "./../../utils/styledComponents";
 import { Gene } from "./../../types";
 
 type Props = {
@@ -32,11 +33,16 @@ const GeneName = styled.div`
   font-size: 9px;
 `;
 
+const StyledH3 = styled.h3`
+  margin: 0;
+`;
+
 const History = ({ genes, onClick }: Props) => {
   if (genes.length < 1) return null;
   return (
     <Container data-testid="history">
-      <h3>History</h3>
+      <StyledH3>History</StyledH3>
+      <StyledLabel>(Most recent on top)</StyledLabel>
       {genes.map((gene) => {
         return (
           <GeneItem
