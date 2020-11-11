@@ -9,7 +9,7 @@ import History from "./components/History";
 import SearchForm from "./components/SearchForm";
 import SortingOptions, { SortingOption } from "./components/SortingOptions";
 import useCachedGenes from "./hooks/useCachedGenes";
-import { SpacerX, SpacerY } from "./utils/styledComponents";
+import { SpacerY } from "./utils/styledComponents";
 
 const Error = styled.div`
   color: red;
