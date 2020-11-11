@@ -19,7 +19,13 @@ const Input: React.FunctionComponent<Props> = ({
     setInputValue(event.target.value);
   };
 
-  const searchKey = () => onSearch(inputValue);
+  const searchKey = () => {
+    const trimmedText = inputValue.trim();
+    if (trimmedText) onSearch(trimmedText);
+    else {
+      alert("Please enter stable id of the gene.");
+    }
+  };
 
   return (
     <div data-testid="search-form">
