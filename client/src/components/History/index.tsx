@@ -17,6 +17,7 @@ const Container = styled.div`
 const GeneItem = styled.div`
   background-color: #eee;
   cursor: pointer;
+  padding: 5px;
 
   &:hover {
     opacity: 0.7;

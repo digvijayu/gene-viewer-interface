@@ -24,7 +24,7 @@ function App() {
   const [genesCache, setAppendNewGeneSearch] = useCachedGenes();
   const [inputValue, setInputValue] = React.useState("");
   const [displayGene, setDisplayGene] = React.useState<Gene | undefined>(
-    genesCache.length > 0 ? genesCache[genesCache.length - 1] : undefined
+    genesCache.length > 0 ? genesCache[0] : undefined
   );
   const [sortingOption, setSortingOption] = useState<SortingOption>(
     "longestToShortest"
