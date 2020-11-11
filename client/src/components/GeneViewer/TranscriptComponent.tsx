@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Transcript } from "./../../types";
+import { Transcript, Exon } from "./../../types";
 import ExonComponent from "./ExonComponent";
 import ExonLink from "./ExonLink";
 
@@ -15,10 +15,13 @@ const StyledTranscript = styled.div`
   position: relative;
 `;
 
+const exonSortingFn = (exonA: Exon, exonB: Exon): number =>
+  exonA.start - exonB.start;
+
 const TranscriptComponent = ({ scale, transcript }: Props) => {
   return (
     <StyledTranscript data-testid="transcript" data-id={transcript.id}>
-      {transcript.Exon.map((exon, index) => {
+      {transcript.Exon.sort(exonSortingFn).map((exon, index) => {
         const nextItem = transcript.Exon[index + 1];
         return (
           <React.Fragment key={exon.id}>
