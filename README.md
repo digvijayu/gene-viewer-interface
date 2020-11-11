@@ -19,7 +19,7 @@
 I have picked the FE part of the project. I have completed both parts of the test.
 I have used following plugins and tools and libraries with reasons.
 
-- React: React in my opinion is easy to setup and use for this use case. I had also kept [d3.js](https://d3js.org/) as another option. But state based implementation could be done simply with state hooks.
+- [React](https://reactjs.org/): React in my opinion is easy to setup and use for this use case. I had also kept [d3.js](https://d3js.org/) as another option. But state based implementation could be done simply with state hooks.
 
 - [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) : Jest unit testing framework works best with react
 
