@@ -1,7 +1,14 @@
 /// <reference types="cypress" />
 context("Search Operation", () => {
-  let clear = Cypress.LocalStorage.clear;
-  Cypress.LocalStorage.clear = function () {};
+  let clear;
+  before(() => {
+    clear = Cypress.LocalStorage.clear;
+    Cypress.LocalStorage.clear = function () {};
+  });
+
+  after(() => {
+    Cypress.LocalStorage.clear = clear;
+  });
 
   it("search for a gene", () => {
     cy.visit("http://localhost:3000");
@@ -28,6 +35,4 @@ context("Search Operation", () => {
     cy.get('[data-testid="transcript"]').should("have.length", 5);
     cy.get('[data-testid="exon"]').should("have.length", 33);
   });
-
-  Cypress.LocalStorage.clear = clear;
 });

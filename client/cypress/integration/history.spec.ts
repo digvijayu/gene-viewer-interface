@@ -68,12 +68,15 @@ context("History Board Tests", () => {
     triggerSearchFor("ENSG00000133597");
     triggerSearchFor("ENSG00000090266");
     triggerSearchFor("ENSG00000240889");
+    cy.get('[data-testid="history-item"] > [data-testid="history-id"]')
+      .eq(0)
+      .should("not.contain", "ENSG00000133597");
+
     triggerSearchFor("ENSG00000133597");
 
-    cy.get('[data-testid="history-item"] > [data-testid="history-id"]').should(
-      "not.contain",
-      "ENSG00000133597"
-    );
+    cy.get('[data-testid="history-item"] > [data-testid="history-id"]')
+      .eq(0)
+      .should("contain", "ENSG00000133597");
   });
 
   Cypress.LocalStorage.clear = clear;
