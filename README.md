@@ -56,3 +56,7 @@ Launches the cypress test runner
 ### `yarn build`
 
 Builds the app for production to the `build` folder.
+
+### `yarn deploy`
+
+Use this command after the build command. This command will deploy app to the github pages.
