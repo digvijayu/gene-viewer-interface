@@ -21,7 +21,11 @@ const exonSortingFn = (exonA: Exon, exonB: Exon): number =>
 
 const TranscriptComponent = ({ scale, transcript, color }: Props) => {
   return (
-    <StyledTranscript data-testid="transcript" data-id={transcript.id}>
+    <StyledTranscript
+      data-testid="transcript"
+      data-id={transcript.id}
+      title={transcript.display_name}
+    >
       {transcript.Exon.sort(exonSortingFn).map((exon, index) => {
         const nextItem = transcript.Exon[index + 1];
         return (

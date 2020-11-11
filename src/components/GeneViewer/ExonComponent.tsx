@@ -14,6 +14,7 @@ const ExonComponent = ({ scale, exon, color }: Props) => {
   const length = scale(exon.end - exon.start, false);
   return (
     <StyledExonBox
+      title={exon.id}
       data-testid="exon"
       left={left}
       length={length}

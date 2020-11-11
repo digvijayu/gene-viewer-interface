@@ -1,5 +1,3 @@
-// export type ObjectType = "Exon" | "Transcript" | "Gene";
-
 export type Exon = {
   end: number;
   db_type: string;
