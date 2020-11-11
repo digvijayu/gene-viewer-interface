@@ -1,3 +1,7 @@
+# [Live](https://digvijayu.github.io/gene-viewer-interface/)
+
+[https://digvijayu.github.io/gene-viewer-interface/](https://digvijayu.github.io/gene-viewer-interface/)
+
 # Introduction
 
 I have picked the FE part of the project. I have completed both parts of the test.
