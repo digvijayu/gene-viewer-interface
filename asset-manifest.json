@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/gene-viewer-interface/static/css/main.4a4137e4.chunk.css",
+    "main.js": "/gene-viewer-interface/static/js/main.da5be237.chunk.js",
+    "main.js.map": "/gene-viewer-interface/static/js/main.da5be237.chunk.js.map",
+    "runtime-main.js": "/gene-viewer-interface/static/js/runtime-main.9f763c3c.js",
+    "runtime-main.js.map": "/gene-viewer-interface/static/js/runtime-main.9f763c3c.js.map",
+    "static/js/2.dccb9080.chunk.js": "/gene-viewer-interface/static/js/2.dccb9080.chunk.js",
+    "static/js/2.dccb9080.chunk.js.map": "/gene-viewer-interface/static/js/2.dccb9080.chunk.js.map",
+    "static/js/3.04e89960.chunk.js": "/gene-viewer-interface/static/js/3.04e89960.chunk.js",
+    "static/js/3.04e89960.chunk.js.map": "/gene-viewer-interface/static/js/3.04e89960.chunk.js.map",
+    "index.html": "/gene-viewer-interface/index.html",
+    "static/css/main.4a4137e4.chunk.css.map": "/gene-viewer-interface/static/css/main.4a4137e4.chunk.css.map",
+    "static/js/2.dccb9080.chunk.js.LICENSE.txt": "/gene-viewer-interface/static/js/2.dccb9080.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9f763c3c.js",
+    "static/js/2.dccb9080.chunk.js",
+    "static/css/main.4a4137e4.chunk.css",
+    "static/js/main.da5be237.chunk.js"
+  ]
+}
