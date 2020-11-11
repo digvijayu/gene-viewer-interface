@@ -17,7 +17,7 @@ const StyledTranscript = styled.div`
 
 const TranscriptComponent = ({ scale, transcript }: Props) => {
   return (
-    <StyledTranscript data-testid="transcript">
+    <StyledTranscript data-testid="transcript" data-id={transcript.id}>
       {transcript.Exon.map((exon, index) => {
         const nextItem = transcript.Exon[index + 1];
         return (

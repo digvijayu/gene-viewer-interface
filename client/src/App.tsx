@@ -23,6 +23,7 @@ function App() {
     const cachedValue = genesCache.find((gene: Gene) => gene.id === newVal);
     if (cachedValue !== undefined) {
       setDisplayGene(cachedValue);
+      setAppendNewGeneSearch(cachedValue);
     } else {
       try {
         const geneData = await genesApi.get(newVal);
